@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <script type="text/javascript" src="../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../easyui/plugins/datagrid-filter.js"></script>
+    <script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+    <style>
+        .datagrid-header-row .datagrid-cell {
+            text-align: center;
+        }
+
+        .textbox-title {
+            padding: 0px 6px 0px 15px;
+            text-align: right;
+        }
+
+        .split-line {
+            margin-top: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .icon-filter{
+            background:url('../easyui/plugins/filter.png') no-repeat center center;
+        }
+    </style>
+</head>
+<body>
+<div class="search-panel">
+    <div style="display: inline-block; vertical-align: middle">
+        <table>
+            <tr>
+                <td class="textbox-title">用户名</td>
+                <td><input class="easyui-textbox" style="width: 150px" type="text"></td>
+                <td class="textbox-title">手机号</td>
+                <td><input class="easyui-textbox" style="width: 150px" type="text"></td>
+                <td class="textbox-title">电子邮箱</td>
+                <td><input class="easyui-textbox" style="width: 150px" type="text"></td>
+                <td class="textbox-title">用户ID</td>
+                <td><input class="easyui-textbox" style="width: 150px" type="text"></td>
+            </tr>
+            <tr>
+                <td class="textbox-title">管理员</td>
+                <td><input class="easyui-textbox" style="width: 150px" type="text"></td>
+            </tr>
+        </table>
+    </div>
+    <div style="display: inline-block; vertical-align: middle">
+        <div style="padding:0px 10px;">
+            <a style="margin-bottom: 5px" href="#" class="easyui-linkbutton"
+               data-options="iconCls:'icon-search'">查 询</a><br>
+            <a style="margin-bottom: 5px" href="#" class="easyui-linkbutton"
+               data-options="iconCls:'icon-reload'">重 置</a>
+        </div>
+    </div>
+</div>
+<div class="split-line"></div>
+<div>
+    <div id="tb" style="height:auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           data-options="iconCls:'icon-add',plain:true"
+           onclick="append()">新增</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           data-options="iconCls:'icon-remove',plain:true"
+           onclick="remove()">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           data-options="iconCls:'icon-save',plain:true"
+           onclick="accept()">存盘</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           data-options="iconCls:'icon-undo',plain:true"
+           onclick="reject()">撤回</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+           data-options="iconCls:'icon-search',plain:true"
+           onclick="getChanges()">查看修改</a>
+    </div>
+    <table id="dg" class="easyui-datagrid" style="width:780px; height: 400px"
+           data-options="
+                            singleSelect: true,
+                            emptyMsg: '暂无数据',
+                            pagination:true,
+                            url: 'datagrid_data1.json',
+                            pageSize:10,
+                            autoRowHeight:false
+                        ">
+        <thead>
+        <tr>
+            <th data-options="field:'itemid',width:100">用户ID</th>
+            <th data-options="field:'productid',width:80,
+                            formatter:function(value,row){
+                                return row.productname;
+                            }">用户名
+            </th>
+            <th data-options="field:'listprice',width:140,formatter:function(value,row){
+                                return row.cost.listprice;
+                            }">
+                手机
+            </th>
+            <th data-options="field:'unitcost',width:200,formatter:function(value,row){
+                                return row.cost.unitcost;
+                            }">
+                电子邮箱
+            </th>
+            <th data-options="field:'attr1',width:150">备注</th>
+            <th data-options="field:'status',width:70,align:'center', formatter: function(value, row) {
+                            if (value && value == '1') {
+                                return '是';
+                            } else if (value && value == '0') {
+                                return '否';
+                            } else {
+                                return null;
+                            }
+                        }">管理员
+            </th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script type="text/javascript">
+
+    $(window).resize(function () {
+        $('#dg').datagrid('resize');
+    })
+
+    $.extend($.fn.datagrid.methods, {
+        editCell: function (jq, param) {
+            let a = jq.each(function () {
+                let col = $(this).datagrid('getColumnOption', param.field);
+                col.editor = 'textbox';
+                $(this).datagrid('beginEdit', param.index);
+                col.editor = undefined;
+                let ed = $(this).datagrid('getEditor', param);
+                if (ed) {
+                    if ($(ed.target).hasClass('textbox-f')) {
+                        $(ed.target).textbox('textbox').focus();
+                    } else {
+                        $(ed.target).focus();
+                    }
+                }
+            });
+            return a;
+        },
+        enableCellEditing: function (jq) {
+            let a = jq.each(function () {
+                let dg = $(this);
+                let opts = dg.datagrid('options');
+                opts.oldOnClickCell = opts.onClickCell;
+                opts.onClickCell = function (index, field) {
+                    if (opts.editIndex != undefined) {
+                        if (dg.datagrid('validateRow', opts.editIndex)) {
+                            dg.datagrid('endEdit', opts.editIndex);
+                            opts.editIndex = undefined;
+                        } else {
+                            return;
+                        }
+                    }
+                    if (this.xindex != index) {
+                        this.xindex = index;
+                        return;
+                    }
+                    dg.datagrid('selectRow', index).datagrid('editCell', {
+                        index: index,
+                        field: field
+                    });
+                    opts.editIndex = index;
+                    opts.oldOnClickCell.call(this, index, field);
+                }
+            });
+            return a;
+        }
+    });
+
+    function append() {
+        let opts = $('#dg').datagrid('options');
+        $('#dg').datagrid('endEdit', opts.editIndex);
+        $('#dg').datagrid('appendRow', {unitcost:'Test'});
+        $('#dg').datagrid('selectRow', $('#dg').datagrid('getRows').length - 1);
+    }
+
+    function remove() {
+        let selectedRows = $('#dg').datagrid('getSelections');
+        if (selectedRows.length == 0) {
+            return;
+        }
+        for (let i=0; i<selectedRows.length; i++) {
+            $('#dg').datagrid('cancelEdit', selectedRows[i])
+                .datagrid('deleteRow', selectedRows[i]);
+        }
+    }
+
+    $(function () {
+        let dg = $('#dg').datagrid({
+            filterBtnIconCls:'icon-filter'
+        });
+        dg.datagrid('enableCellEditing');
+
+    })
+
+    function accept() {
+        $('#dg').datagrid('acceptChanges');
+    }
+
+    function reject() {
+        $('#dg').datagrid('updateRow', {
+            index: 2,
+            row: {
+                cost: {unitcost:'xxxxxx'}
+            }
+        });
+    }
+
+    function getChanges() {
+        let dg = $('#dg');
+        dg.datagrid('enableFilter');
+    }
+</script>
+</body>
+</html>

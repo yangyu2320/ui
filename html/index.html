@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="width:100%;height:100%;">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <script type="text/javascript" src="../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+    <style>
+        iframe {
+            display: block;
+            border: none;
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
+<body style="width:100%;height:100%;margin: 0">
+<div class="easyui-layout" style="width:100%;height:100%">
+    <div data-options="region:'north'" style="height:50px"></div>
+    <div id="side-menu" class="easyui-sidemenu" data-options="region:'west',data:menus" style="width:150px;"></div>
+    <div data-options="region:'center'">
+        <div class="easyui-tabs" style="width:100%;height:100%">
+            <div title="首页" style="padding:10px">
+            </div>
+            <div title="表格示例" data-options="closable:true" style="padding:10px">
+                <iframe src="gridTable.html"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    let menus = [{
+        text: '用户管理',
+        iconCls: 'icon-man',
+        state: 'open',
+        children: [{
+            text: '用户列表'
+        }, {
+            text: '用户维护',
+            url: 'gridTable.html'
+        }]
+    }, {
+        text: '组织管理',
+        iconCls: 'icon-more',
+        state: 'open',
+        children: [{
+            text: '组织类型'
+        }, {
+            text: '组织维护'
+        }, {
+            text: '组织关系'
+        }]
+    }];
+</script>
+</body>
+</html>

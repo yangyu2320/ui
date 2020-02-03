@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6d227696-6ba4-4fa8-acba-2ae3468338c8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1S2a7I0a63aKehp1V3mjbRP7vgk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../hAdmin" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\test\easyui\easyui" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WorkSpace\test\easyui\easyui\plugins" />
+      <recent name="D:\WorkSpace\test\easyui\easyui" />
+      <recent name="D:\WorkSpace\test\easyui\html" />
+      <recent name="D:\test\easyui\html" />
+      <recent name="D:\test\easyui" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6d227696-6ba4-4fa8-acba-2ae3468338c8" name="Default Changelist" comment="" />
+      <created>1570763975236</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570763975236</updated>
+      <workItem from="1570763976537" duration="3392000" />
+      <workItem from="1579227188984" duration="6021000" />
+      <workItem from="1579244664692" duration="12666000" />
+      <workItem from="1579396784879" duration="26161000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="550" y="176" key="FileChooserDialogImpl" timestamp="1579488021370">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="550" y="176" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1579488021370" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1579230978482">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.834@0.0.1536.834" timestamp="1579230978482" />
+    <state x="94" y="94" width="1349" height="646" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1579417279502">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="94" y="94" width="1349" height="646" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.834@0.0.1536.834" timestamp="1579417279502" />
+    <state x="412" y="36" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579406159548">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="412" y="36" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.834@0.0.1536.834" timestamp="1579406159548" />
+    <state x="459" y="172" width="619" height="490" key="find.popup" timestamp="1579229736467">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="459" y="172" width="619" height="490" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1579229736467" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1579397949419">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1579397949419" />
+  </component>
+</project>
